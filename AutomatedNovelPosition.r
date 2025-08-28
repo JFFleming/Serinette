@@ -1,0 +1,8 @@
+args = commandArgs(trailingOnly=TRUE)
+library(ape)
+library(MonoPhy)
+CompareTree <- read.tree(args[1])
+CompareClades <- read.csv(args[2], header=FALSE)
+NewOut <- c("AFZ78086_1_acropsin3_acropora_","aug_v2a_10282_t1_Acropora_digi","NV_CN151Suga08_1-24","NV_CN146Suga08_1-24")
+RootedTree <- root(CompareTree, outgroup=NewOut, resolve.root=TRUE)
+AssessMonophyly(RootedTree, taxonomy=CompareClades)
